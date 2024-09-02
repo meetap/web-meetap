@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -11,7 +12,10 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        return view("frontend.app");
+        //slider
+        $sliders = Slider::where('is_published', 1)->get();
+
+        return view("frontend.homepage.index", compact('sliders'));
     }
 
     /**
